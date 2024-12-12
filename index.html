@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="icon" href="../dev-laoz-WaveArtCSS/assets/favicons/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="../dev-laoz-WaveArtCSS/src/base.css" />
+  <link rel="stylesheet" href="../dev-laoz-WaveArtCSS/src/components.css" />
+  <link rel="stylesheet" href="../dev-laoz-WaveArtCSS/src/utilities.css" />
+  <link rel="stylesheet" href="../dev-laoz-WaveArtCSS/src/animations.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <img src="../dev-laoz-WaveArtCSS/assets/favicons/favicon.png" alt="Logo de la Compañía"
+      style="width: 50px; height: auto;" />
+    <h1>Markdown Viewer</h1>
+    <!-- Menu de navegación -->
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="../">Index</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <p>
+        Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be
+        converted to many output formats, but the original tool by the same name only supports HTML. Markdown is
+        often used to format readme files, for writing messages in online discussion forums, and to create rich text
+        using a plain text editor.
+      </p>
+      <section>    
+        <fieldset>
+          <legend>Markdown Text</legend>
+          <textarea id="markdown" rows="10" cols="50"># Hello Markdown!</textarea>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <legend>Markdown Content</legend>
+          <div id="output"></div>
+        </fieldset>
+      </section>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <span>© 2024 Mi Negocio. Todos los derechos reservados.</span>
+  </footer>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
