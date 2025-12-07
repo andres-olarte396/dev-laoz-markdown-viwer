@@ -33,24 +33,144 @@
   <!-- Main Content -->
   <main>
     <div class="container">
-      <p>
-        Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be
-        converted to many output formats, but the original tool by the same name only supports HTML. Markdown is
-        often used to format readme files, for writing messages in online discussion forums, and to create rich text
-        using a plain text editor.
-      </p>
-      <section>    
-        <fieldset>
-          <legend>Markdown Text</legend>
-          <textarea id="markdown" rows="10" cols="50"># Hello Markdown!</textarea>
-        </fieldset>
-      </section>
-      <section>
-        <fieldset>
-          <legend>Markdown Content</legend>
-          <div id="output"></div>
-        </fieldset>
-      </section>
+      <!-- Toolbar de control -->
+      <div class="toolbar">
+        <div class="toolbar-group">
+          <button class="btn-toggle" id="toggleEditor" title="Ocultar/Mostrar Editor">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            Editor
+          </button>
+          <button class="btn-toggle" id="togglePreview" title="Ocultar/Mostrar Vista Previa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Preview
+          </button>
+        </div>
+        <div class="toolbar-divider"></div>
+        <!-- Barra de herramientas de formato -->
+        <div class="toolbar-group format-tools">
+          <button class="btn-format" data-format="bold" title="Negrita (Ctrl+B)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"></path>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="italic" title="Cursiva (Ctrl+I)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"></path>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="strikethrough" title="Tachado">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.3 4.9c-2.3-.6-4.4-1-6.2-.9-2.7 0-5.3.7-5.3 3.6 0 1.5 1.8 3.3 3.6 3.9h.2m8.2 3.7c.3.4.4.8.4 1.3 0 2.9-2.7 3.6-5.3 3.6-2.3 0-4.4-.3-6.2-.9M4 11h16"></path>
+            </svg>
+          </button>
+          <span class="separator">|</span>
+          <button class="btn-format" data-format="h1" title="Título 1">H1</button>
+          <button class="btn-format" data-format="h2" title="Título 2">H2</button>
+          <button class="btn-format" data-format="h3" title="Título 3">H3</button>
+          <span class="separator">|</span>
+          <button class="btn-format" data-format="link" title="Enlace">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="image" title="Imagen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="code" title="Código en línea">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="codeblock" title="Bloque de código">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+              <path d="M7 10l2 2-2 2M13 14h4"></path>
+            </svg>
+          </button>
+          <span class="separator">|</span>
+          <button class="btn-format" data-format="ul" title="Lista sin orden">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="ol" title="Lista ordenada">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="10" y1="6" x2="21" y2="6"></line>
+              <line x1="10" y1="12" x2="21" y2="12"></line>
+              <line x1="10" y1="18" x2="21" y2="18"></line>
+              <path d="M4 6h1v4M4 10h2"></path>
+              <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="quote" title="Cita">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="hr" title="Línea horizontal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+            </svg>
+          </button>
+          <button class="btn-format" data-format="table" title="Tabla">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="3" y1="15" x2="21" y2="15"></line>
+              <line x1="12" y1="3" x2="12" y2="21"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Editor de dos columnas -->
+      <div class="editor-container">
+        <!-- Panel del Editor -->
+        <div class="editor-panel" id="editorPanel">
+          <div class="panel-header">
+            <h3>Editor Markdown</h3>
+          </div>
+          <textarea id="markdown" placeholder="# Escribe tu Markdown aquí...
+## Subtítulo
+
+Escribe **texto en negrita** o *texto en cursiva*.
+
+- Lista de elementos
+- Otro elemento
+
+[Enlaces](https://example.com) e imágenes funcionan también.
+
+```javascript
+// Bloques de código
+console.log('Hello World');
+```"></textarea>
+        </div>
+
+        <!-- Panel de Vista Previa -->
+        <div class="preview-panel" id="previewPanel">
+          <div class="panel-header">
+            <h3>Vista Previa</h3>
+          </div>
+          <div id="output" class="markdown-preview"></div>
+        </div>
+      </div>
     </div>
   </main>
   <!-- Footer -->

@@ -1,3 +1,18 @@
+/* ========================================
+   ESTILOS GENERALES
+   ======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
 header img {
   width: 100px;
   height: 100px;
@@ -5,3 +20,362 @@ header img {
   margin-left: 100px;
 }
 
+main {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ========================================
+   BARRA DE HERRAMIENTAS
+   ======================================== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 30px;
+  background: #dee2e6;
+  margin: 0 5px;
+}
+
+.btn-toggle,
+.btn-format {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle:hover,
+.btn-format:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.btn-toggle:active,
+.btn-format:active {
+  transform: translateY(0);
+}
+
+.btn-toggle.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.separator {
+  color: #dee2e6;
+  margin: 0 4px;
+}
+
+.format-tools {
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   CONTENEDOR DEL EDITOR
+   ======================================== */
+.editor-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  height: calc(100vh - 200px);
+  min-height: 500px;
+}
+
+.editor-container.editor-only {
+  grid-template-columns: 1fr;
+}
+
+.editor-container.preview-only {
+  grid-template-columns: 1fr;
+}
+
+.editor-container.editor-only .preview-panel {
+  display: none;
+}
+
+.editor-container.preview-only .editor-panel {
+  display: none;
+}
+
+/* ========================================
+   PANELES
+   ======================================== */
+.editor-panel,
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid #dee2e6;
+}
+
+.preview-panel {
+  border-right: none;
+  border-left: 1px solid #dee2e6;
+}
+
+.panel-header {
+  padding: 12px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.panel-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
+/* ========================================
+   EDITOR DE TEXTO
+   ======================================== */
+#markdown {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #212529;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+#markdown:focus {
+  background: #fefefe;
+}
+
+#markdown::placeholder {
+  color: #adb5bd;
+}
+
+/* ========================================
+   VISTA PREVIA
+   ======================================== */
+.markdown-preview {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #212529;
+}
+
+/* Estilos para el contenido renderizado */
+.markdown-preview h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.3em;
+  color: #212529;
+}
+
+.markdown-preview h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.2em;
+  color: #212529;
+}
+
+.markdown-preview h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+  color: #212529;
+}
+
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  font-weight: 600;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+  color: #212529;
+}
+
+.markdown-preview p {
+  margin-bottom: 1em;
+  line-height: 1.7;
+}
+
+.markdown-preview a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.markdown-preview a:hover {
+  text-decoration: underline;
+}
+
+.markdown-preview code {
+  padding: 2px 6px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #e83e8c;
+}
+
+.markdown-preview pre {
+  padding: 16px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.markdown-preview pre code {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #212529;
+  font-size: 0.9em;
+}
+
+.markdown-preview blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 4px solid #dee2e6;
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  margin-bottom: 1em;
+  padding-left: 2em;
+}
+
+.markdown-preview li {
+  margin-bottom: 0.3em;
+}
+
+.markdown-preview table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.markdown-preview th,
+.markdown-preview td {
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-preview th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.markdown-preview tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.markdown-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+.markdown-preview hr {
+  border: none;
+  border-top: 2px solid #dee2e6;
+  margin: 2em 0;
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO
+   ======================================== */
+#markdown::-webkit-scrollbar,
+.markdown-preview::-webkit-scrollbar {
+  width: 10px;
+}
+
+#markdown::-webkit-scrollbar-track,
+.markdown-preview::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#markdown::-webkit-scrollbar-thumb,
+.markdown-preview::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+#markdown::-webkit-scrollbar-thumb:hover,
+.markdown-preview::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .editor-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .editor-panel,
+  .preview-panel {
+    min-height: 400px;
+  }
+
+  .preview-panel {
+    border-left: none;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .toolbar {
+    padding: 8px 10px;
+  }
+
+  .format-tools {
+    display: none;
+  }
+}
