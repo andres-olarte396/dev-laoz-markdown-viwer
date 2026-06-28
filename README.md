@@ -69,7 +69,7 @@
 
 ## 🛠️ Instalación y Configuración
 
-### Opción 1: Uso Directo
+### Opción 1. Uso Directo
 
 1. **Clona este repositorio**:
 
